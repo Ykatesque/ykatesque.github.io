@@ -109,4 +109,21 @@ aboutlink.on('click', scrollAbout);
  });
 
 
+  var $myElt       = $('.fancy_title');      // whatever element you want to check
+  var $window      = $(window);            // the window jQuery element
+  var myTop        = $myElt.offset().top;  // the top (y) location of your element
+  var windowTop    = $window.scrollTop();           // the top of the window
+  var windowBottom = windowTop + $window.height();  // the bottom of the window
+
+  if (myTop > windowTop && myTop < windowBottom) {
+
+  } else {
+      // element is NOT in the window
+      // maybe use this to scroll...
+      // $('html, body').animate({scrollTop: myTop}, 300);
+  }
+
+
+
+
 });
