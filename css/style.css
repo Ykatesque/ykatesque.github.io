@@ -498,6 +498,9 @@ padding: 0;
 
     }
 
+    #text {
+    }
+
     .aboutheader{
       margin: 0 auto;
       text-align: center;
@@ -521,9 +524,15 @@ padding: 0;
     }
 
     .fancy_title{
-      font-size: 240px;
       padding: 0;
       margin:0;
+      width: 100%;
+
+      font-size: 230px;
+    }
+
+    #intro {
+      width: 100%;
     }
 
     #both {
