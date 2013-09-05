@@ -75,7 +75,7 @@ ul#menu {
 
   font-family: LeagueGothicRegular, "League Gothic", Sans-Serif;
   text-shadow: 0px 1px 1px #4d4d4d;
-  color: rgba(0,0,0,.6);
+  color: rgba(0,0,0,.9);
 
 
 }
@@ -499,6 +499,7 @@ padding: 0;
     }
 
     #text {
+
     }
 
     .aboutheader{
@@ -520,6 +521,7 @@ padding: 0;
     }
     .nav{
       text-align: center;
+
 
     }
 

@@ -1,4 +1,21 @@
 
+function preload(arrayOfImages) {
+    $(arrayOfImages).each(function(){
+        $('<img/>')[0].src = this;
+        // Alternatively you could use:
+        // (new Image()).src = this;
+    });
+}
+
+// Usage:
+
+preload([
+    '1.jpg',
+    '2.jpg',
+    '3.jpg'
+]);
+
+
 //fade in different texture bgs on Ykat logotype
 var scrollSpeed = 2500;
 var currentImage = 1;
@@ -52,22 +69,28 @@ $(window).scroll(function() {
 
 //needs some major refactoring, but laying out the ground work right now
 
+var introHeight = $('#intro').height();
+var aboutHeight = $('#aboutc').height();
+var portHeight = $('#portfolioc').height();
+var contactHeight = $('#contactc').height();
+
+
 var scrollPort = function(){
   event.preventDefault();
-  $('body, html').animate({scrollTop: 880 + 940}, 'slow');
+  $('body, html').animate({scrollTop: introHeight + aboutHeight + 100}, 'slow');
   aboutlink.addClass('.aboutbg');
 
 };
 
 var scrollContact = function(){
   event.preventDefault();
-  $('body, html').animate({scrollTop: ((890 * 2)+ 980)}, 'slow');
+  $('body, html').animate({scrollTop:introHeight + aboutHeight + portHeight + 200}, 'slow');
 };
 
 
 var scrollAbout = function(){
   event.preventDefault();
-  $('body, html').animate({scrollTop: (850)}, 'slow');
+  $('body, html').animate({scrollTop: (introHeight)}, 'slow');
 
   //$('.nav').css('background-image', 'url(../intoxicating_by_lexiibabii01-d53vl31.jpg)');
 
