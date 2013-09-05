@@ -1,13 +1,14 @@
 
+//preloading images for use as bg on 'Ykat' h1 text
+
 function preload(arrayOfImages) {
     $(arrayOfImages).each(function(){
         $('<img/>')[0].src = this;
-        // Alternatively you could use:
-        // (new Image()).src = this;
+        console.log('I ran')
+
     });
 }
 
-// Usage:
 
 preload([
     '1.jpg',
@@ -21,11 +22,11 @@ var scrollSpeed = 2500;
 var currentImage = 1;
 
 function nextImage(currentImage) {
-      currentImage = ((currentImage + 1) % 4); // we have images 1..6 to cycle through
+      currentImage = ((currentImage + 1) % 4); // we have images 1..3 to cycle through
       if(currentImage == 0) currentImage = 1;
       //console.log(currentImage);
 
-      $('.display-sweet-image-behind').fadeTo(80, 0.55, function() {
+      $('.display-sweet-image-behind').fadeTo(40, 0.65, function() {
         $(this).css("background-image", "url(" + currentImage + ".jpg)", "opacity", "0.25").fadeTo(80, 1.0);
       });
 
@@ -34,7 +35,7 @@ function nextImage(currentImage) {
 
 setInterval(function(){
   currentImage = nextImage(currentImage);
-}, 600);
+}, 200);
 
 
 
