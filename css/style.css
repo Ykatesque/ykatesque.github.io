@@ -487,7 +487,7 @@ padding: 0;
   @media all and (max-width:700px) and (min-width: 320px) {
     #menu {
       background: url('../lightpaperfibers.png');
-      border: 1px solid red;
+
       text-align: center;
 
     }
