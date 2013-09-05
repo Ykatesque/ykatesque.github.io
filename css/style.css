@@ -31,6 +31,9 @@ body{
   background: url('../lightpaperfibers.png');
 }
 
+html { overflow: hidden; height: 100%; }
+body { overflow: auto; height: 100%; }
+
 #intro {
   width: 100%;
   min-height: 900px;

@@ -26,8 +26,8 @@ function nextImage(currentImage) {
       if(currentImage == 0) currentImage = 1;
       //console.log(currentImage);
 
-      $('.display-sweet-image-behind').fadeTo(40, 0.65, function() {
-        $(this).css("background-image", "url(" + currentImage + ".jpg)", "opacity", "0.25").fadeTo(80, 1.0);
+      $('.display-sweet-image-behind').fadeTo(90, 0.65, function() {
+        $(this).css("background-image", "url(" + currentImage + ".jpg)", "opacity", "0.95").fadeTo(90, 1.0);
       });
 
       return currentImage;
@@ -35,7 +35,7 @@ function nextImage(currentImage) {
 
 setInterval(function(){
   currentImage = nextImage(currentImage);
-}, 200);
+}, 1200);
 
 
 
@@ -77,20 +77,20 @@ var contactHeight = $('#contactc').height();
 
 
 var scrollPort = function(){
-  event.preventDefault();
+
   $('body, html').animate({scrollTop: introHeight + aboutHeight + 100}, 'slow');
-  aboutlink.addClass('.aboutbg');
+
 
 };
 
 var scrollContact = function(){
-  event.preventDefault();
+
   $('body, html').animate({scrollTop:introHeight + aboutHeight + portHeight + 200}, 'slow');
 };
 
 
 var scrollAbout = function(){
-  event.preventDefault();
+
   $('body, html').animate({scrollTop: (introHeight)}, 'slow');
 
   //$('.nav').css('background-image', 'url(../intoxicating_by_lexiibabii01-d53vl31.jpg)');
@@ -115,7 +115,7 @@ aboutlink.on('click', scrollAbout);
 
  $(".link").on("click", function() {
    // hide all elements under crate
-   event.preventDefault();
+
  $('#wrapper').children().hide();
 
    // now show the element clicked...
