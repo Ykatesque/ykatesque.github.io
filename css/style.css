@@ -161,6 +161,7 @@ ul#menu {
   margin: 0 auto;
   width: 100%;
 
+
 }
 
 #about_content {
@@ -173,18 +174,19 @@ ul#menu {
 
 #wrapper {
 
-margin: 80px auto 0px auto;
+margin: 60px auto 0px auto;
+
 width: 96%;
 height: 650px;
 font-family: Open Sans, Sans-Serif;
 font-size: 18px;
-padding-bottom: 30px;
-
 
 }
 
 #portfolioc{
-  background: url('../2.jpg') repeat;
+  background: url('../2.jpg');
+  background-repeat:repeat-x;
+  height: 950px;
 
 
 }
@@ -204,10 +206,11 @@ text-transform: uppercase;
 
 
 #otherp {
+
   width: 95%;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin:50px auto 30px auto;
   overflow: hidden;
+
 }
 
 #otherp li {
@@ -221,7 +224,12 @@ text-transform: uppercase;
 #otherp li a{
   text-decoration: none;
   color: #58b3bf;
+  font-size: 36px;
 
+}
+
+#otherp li a:active{
+  color: #b2a79b;
 }
 
 #otherp li a:hover {
@@ -231,6 +239,7 @@ text-transform: uppercase;
 
 
 text-align: center;
+float: right;
 overflow: hidden;
 font-family: LeagueGothicRegular, "League Gothic", Sans-Serif;
 text-transform: uppercase;
@@ -291,6 +300,8 @@ font-size: 20px;
 .projectgallery{
 
   height: 350px;
+  width: 100%;
+  overflow: hidden;
 
 
 

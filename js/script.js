@@ -92,7 +92,7 @@ $(document).ready(function () {
     $('#portfolio').on('click', function scrollPort(event) {
         console.log("scrolling to portfolio");
         event.preventDefault();
-        $('body, html').animate({ scrollTop: ($('#intro').height() + $('#aboutc').height() + 100) }, 'slow');
+        $('body, html').animate({ scrollTop: ($('#intro').height() + $('#aboutc').height() + 120) }, 'slow');
     });
 
 
