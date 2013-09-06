@@ -286,5 +286,21 @@
 </script>
 
 
+<script>
+$("#intro").mousemove(function(e){
+  currentImage = (currentImage + 1);
+  if (currentImage == 4) currentImage = 1;
+  console.log(currentImage);
+  $('.display-sweet-image-behind').fadeTo(90, 1, function () {
+      $(this).css("background-image", "url(" + currentImage + ".png)", "opacity", "0.95").fadeTo(90, 1.0);
+  });
+
+  return currentImage;
+
+
+});
+
+</script>
+
 
 </html>
