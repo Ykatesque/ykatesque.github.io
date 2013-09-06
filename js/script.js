@@ -17,21 +17,22 @@ preload([
 
 
 //fade in different texture bgs on Ykat logotype
-var scrollSpeed = 2500;
-var currentImage = 1;
+var scrollSpeed = 1000;
+var currentImage = 0;
 var stickyNavTop = $('.nav').offset().top;
 var debounceTimer = null;
 var imageLoopTimer = null;
 
 function nextImage(currentImage) {
-    currentImage = ((currentImage + 1) % 4); // we have images 1..3 to cycle through
-    if (currentImage == 0) currentImage = 1;
-    //console.log(currentImage);
-    $('.display-sweet-image-behind').fadeTo(90, 0.65, function () {
-        $(this).css("background-image", "url(" + currentImage + ".png)", "opacity", "0.95").fadeTo(90, 1.0);
+    currentImage = ((currentImage + 1)); // we have images 1..3 to cycle through
+    if (currentImage == 4) currentImage = 1;
+    console.log(currentImage);
+    $('.display-sweet-image-behind').fadeTo(80, 0.7, function () {
+        $(this).css("background-image", "url(" + currentImage + ".png)", "opacity", "1").fadeTo(80, 1);
     });
 
     return currentImage;
+    console.log(currentImage);
 }
 
 var stickyNav = function () {
