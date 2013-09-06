@@ -17,7 +17,7 @@ preload([
 
 
 //fade in different texture bgs on Ykat logotype
-var scrollSpeed = 1200;
+var scrollSpeed = 2500;
 var currentImage = 1;
 var stickyNavTop = $('.nav').offset().top;
 var debounceTimer = null;
