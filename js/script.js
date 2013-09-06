@@ -18,7 +18,7 @@ preload([
 
 //fade in different texture bgs on Ykat logotype
 var scrollSpeed = 2000;
-var currentImage = 0;
+var currentImage = 1;
 var stickyNavTop = $('.nav').offset().top;
 var debounceTimer = null;
 var imageLoopTimer = null;
@@ -37,9 +37,11 @@ function nextImage(currentImage) {
 
 var stickyNav = function () {
     if ($(window).scrollTop() > stickyNavTop) {
+        $('#menu').css("text-align", "right");
         $('.nav').addClass('sticky');
     } else {
         $('.nav').removeClass('sticky');
+        $('#menu').css("text-align", "center");
     }
 };
 
