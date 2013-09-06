@@ -105,6 +105,7 @@ ul#menu {
 
   /*border: 1px solid blue;*/
   margin: 0 auto;
+
   background: url('../lightpaperfibers.png');
 }
 
@@ -177,9 +178,10 @@ ul#menu {
 margin: 60px auto 0px auto;
 
 width: 96%;
-height: 650px;
+height: auto;
 font-family: Open Sans, Sans-Serif;
 font-size: 18px;
+padding-bottom: 20px;
 
 }
 
@@ -206,10 +208,11 @@ text-transform: uppercase;
 
 
 #otherp {
+  width: 100%;
 
-  width: 95%;
-  margin:50px auto 30px auto;
-  overflow: hidden;
+
+  height: 50px;
+  background: url('../lightpaperfibers.png');
 
 }
 
@@ -236,11 +239,11 @@ text-transform: uppercase;
   color: #b2a79b;
 }
 #otherp ul {
-
-
+padding: 0;
+margin: 0;
+background: url('../lightpaperfibers.png');
 text-align: center;
 float: right;
-overflow: hidden;
 font-family: LeagueGothicRegular, "League Gothic", Sans-Serif;
 text-transform: uppercase;
 
@@ -266,6 +269,10 @@ font-size: 20px;
   margin: 0;
   font-size: 45px;
   color: #58b3bf;
+}
+
+.content {
+
 }
 
 #grid {
@@ -342,9 +349,6 @@ padding: 0;
 
 }
 
-#img {
-
-}
 
 #notheading {
   width:40%;

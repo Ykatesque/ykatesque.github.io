@@ -43,12 +43,12 @@ var stickyNav = function () {
     }
 };
 
-/*var startImageLooping = function() {
+var startImageLooping = function() {
     console.log("starting image loop timer...");
     imageLoopTimer = setInterval(function () {
       currentImage = nextImage(currentImage);
     }, scrollSpeed);
-}*/
+}
 
 
 var endImageLooping = function() {
