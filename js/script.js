@@ -1,11 +1,10 @@
-
 //preloading images for use as bg on 'Ykat' h1 text
 
 function preload(arrayOfImages) {
-    $(arrayOfImages).each(function(){
+    console.log("(pre)loading " + arrayOfImages.length + " images");
+    $(arrayOfImages).each(function () {
         $('<img/>')[0].src = this;
-        console.log('I ran');
-
+        console.log("loaded: " + this);
     });
 }
 
@@ -18,134 +17,111 @@ preload([
 
 
 //fade in different texture bgs on Ykat logotype
-var scrollSpeed = 2500;
+var scrollSpeed = 1200;
 var currentImage = 1;
+var stickyNavTop = $('.nav').offset().top;
+var debounceTimer = null;
+var imageLoopTimer = null;
 
 function nextImage(currentImage) {
-      currentImage = ((currentImage + 1) % 4); // we have images 1..3 to cycle through
-      if(currentImage == 0) currentImage = 1;
-      //console.log(currentImage);
-      $('.display-sweet-image-behind').fadeTo(90, 0.65, function() {
+    currentImage = ((currentImage + 1) % 4); // we have images 1..3 to cycle through
+    if (currentImage == 0) currentImage = 1;
+    //console.log(currentImage);
+    $('.display-sweet-image-behind').fadeTo(90, 0.65, function () {
         $(this).css("background-image", "url(" + currentImage + ".png)", "opacity", "0.95").fadeTo(90, 1.0);
-      });
+    });
 
-      return currentImage;
+    return currentImage;
 }
 
-setInterval(function(){
-  currentImage = nextImage(currentImage);
-}, 1200);
+var stickyNav = function () {
+    if ($(window).scrollTop() > stickyNavTop) {
+        $('.nav').addClass('sticky');
+    } else {
+        $('.nav').removeClass('sticky');
+    }
+};
 
-
-
-
-$(document).ready(function() {
-
-//setting some variables
-var menu = $('#menu');
-var aboutlink = $('#about')
-var portfoliolink = $('#portfolio');
-var contactlink = $('#contact');
-
-
-//sticky nav
-var stickyNavTop = $('.nav').offset().top;
-var stickyNav = function(){
-var scrollTop = $(window).scrollTop();
-if (scrollTop > stickyNavTop) {
-    $('.nav').addClass('sticky');
-
-} else {
-    $('.nav').removeClass('sticky');
+var startImageLooping = function() {
+    console.log("starting image loop timer...");
+    imageLoopTimer = setInterval(function () {
+      currentImage = nextImage(currentImage);
+    }, scrollSpeed);
 }
-};
-
-stickyNav();
-
-$(window).scroll(function() {
-  stickyNav();
-});
 
 
-//needs some major refactoring, but laying out the ground work right now
+var endImageLooping = function() {
+    console.log("stopping image loop timer...");
+    clearTimeout(imageLoopTimer);
+    imageLoopTimer = null;
+}
 
-var introHeight = $('#intro').height();
-var aboutHeight = $('#aboutc').height();
-var portHeight = $('#portfolioc').height();
-var contactHeight = $('#contactc').height();
+$(document).ready(function () {
 
+    stickyNav();
 
-var scrollPort = function(){
+    $(window).scroll(function(){
+        if(debounceTimer) clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(function(){
 
-  $('body, html').animate({scrollTop: introHeight + aboutHeight + 100}, 'slow');
+            // set up the sticky nav class...
+            stickyNav();
 
-
-};
-
-var scrollContact = function(){
-
-  $('body, html').animate({scrollTop:introHeight + aboutHeight + portHeight + 200}, 'slow');
-};
-
-
-var scrollAbout = function(){
-
-  $('body, html').animate({scrollTop: (introHeight)}, 'slow');
-
-  //$('.nav').css('background-image', 'url(../intoxicating_by_lexiibabii01-d53vl31.jpg)');
-
-
-};
-
-portfoliolink.on('click', scrollPort);
-contactlink.on('click', scrollContact);
-aboutlink.on('click', scrollAbout);
-
-// window.setInterval(function(){
-//    window.setTimeout(function(){
-//        $('.display-sweet-image-behind').css('background-image','url(intoxicating_by_lexiibabii01-d53vl31.jpg)');
-//    },600);
-//     $('.display-sweet-image-behind').css('background-image','url(tumblr_md05w7QDZV1qkovyeo1_500.png)');
-// },300);
+            // turn off the interval timer if it's not visible...
+            var $myElt = $('.fancy_title'); // whatever element you want to check
+            var $window = $(window); // the window jQuery element
+            var myTop = $myElt.offset().top; // the top (y) location of your element
+            var windowTop = $window.scrollTop(); // the top of the window
+            var windowBottom = windowTop + $window.height(); // the bottom of the window
+                startImageLooping();
+            if (myTop > windowTop && myTop < windowBottom) {
+            } else {
+                endImageLooping();
+            }
+       }, 200);
+    });
 
 
+    $('#about').on('click', function scrollAbout(event) {
+        console.log("scrolling to about");
+        event.preventDefault();
+        $('body, html').animate({ scrollTop: ($('#intro').height()) },
+          'slow');
+    });
 
-///Project Menu fadeToggle
-
- $(".link").on("click", function() {
-   // hide all elements under crate
-
- $('#wrapper').children().hide();
-
-   // now show the element clicked...
-   child_element_name = $(this).data("target");
-   console.log($(this).data("target"))
-   $(child_element_name).fadeToggle();
-
-});
-
-  $(".item a").hover(function() {
-
-  $(this).next().fadeToggle();
+    $('#portfolio').on('click', function scrollPort(event) {
+        console.log("scrolling to portfolio");
+        event.preventDefault();
+        $('body, html').animate({ scrollTop: ($('#intro').height() + $('#aboutc').height() + 100) }, 'slow');
+    });
 
 
- });
+    $('#contact').on('click', function scrollContact(event) {
+        console.log("scrolling to contact");
+        event.preventDefault();
+        $('body, html').animate({ scrollTop: ($('#intro').height() + $('#aboutc').height() + $('#portfolioc').height() + 200) }, 'slow');
+    });
 
 
-  var $myElt       = $('.fancy_title');      // whatever element you want to check
-  var $window      = $(window);            // the window jQuery element
-  var myTop        = $myElt.offset().top;  // the top (y) location of your element
-  var windowTop    = $window.scrollTop();           // the top of the window
-  var windowBottom = windowTop + $window.height();  // the bottom of the window
+    $(".link").on("click", function (event) {
+        event.preventDefault();
+        // hide all elements under crate
+        $('#wrapper').children().hide();
 
-  if (myTop > windowTop && myTop < windowBottom) {
+        // now show the element clicked...
+        child_element_name = $(this).data("target");
+        console.log($(this).data("target"));
+        $(child_element_name).fadeToggle();
+    });
 
-  } else {
-      // element is NOT in the window
-      // maybe use this to scroll...
-      // $('html, body').animate({scrollTop: myTop}, 300);
-  }
+    $(".item a").hover(function () {
+        $(this).next().fadeToggle();
+    });
 
+
+
+    // do this at the end, don't start the interval until everyting is set up
+    startImageLooping();
 
 
 
