@@ -41,7 +41,7 @@ var stickyNav = function () {
         $('.nav').addClass('sticky');
     } else {
         $('.nav').removeClass('sticky');
-        $('#menu').css("text-align", "center");
+        $('#menu').css("text-align", "right");
     }
 };
 
@@ -55,7 +55,7 @@ var startImageLooping = function() {
 
 var endImageLooping = function() {
     console.log("stopping image loop timer...");
-    clearTimeout(imageLoopTimer);
+    clearInterval(imageLoopTimer);
     imageLoopTimer = null;
 }
 
