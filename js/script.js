@@ -41,7 +41,7 @@ var stickyNav = function () {
         $('.nav').addClass('sticky');
     } else {
         $('.nav').removeClass('sticky');
-        $('#menu').css("text-align", "right");
+        $('#menu').css("text-align", "center");
     }
 };
 
